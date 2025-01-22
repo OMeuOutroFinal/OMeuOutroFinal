@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O meu outro final.</title>
+  <!-- Fonte personalizada -->
+  <style>
+    @font-face {
+      font-family: 'MinhaFonte';
+      src: url('assets/fonts/Lith.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <a href="index.html">Início</a>
+    <a href="alfabeto.html">Alfabeto</a>
+    <a href="sobre.html">Sobre</a>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <h1>Decifre o Alfabeto</h1>
+
+    <div class="alphabet-container">
+      <!-- Os caracteres estilizados aparecerão aqui -->
+    </div>
+
+    <div id="feedback"></div>
+  </div>
+
+  <script>
+    // Define o alfabeto e associações
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    const guessedLetters = {};
+    const shuffledAlphabet = alphabet.sort(() => Math.random() - 0.5); // Embaralhar o alfabeto
+
+    // Adiciona os caracteres e campos de entrada à página
+    function setupAlphabetGame() {
+      const container = document.querySelector('.alphabet-container');
+      shuffledAlphabet.forEach((letter, index) => {
+        const letterBox = document.createElement('div');
+        letterBox.classList.add('letter-box');
+
+        // Caractere estilizado
+        const character = document.createElement('div');
+        character.textContent = letter; // Aqui vai o caractere estilizado
+        character.classList.add('styled-character');
+        
+        // Campo de entrada para o palpite
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.maxLength = 1; // Apenas uma letra
+        input.dataset.letter = letter; // Associa a letra correta
+        input.oninput = checkGuess; // Verifica ao digitar
+        
+        // Adiciona ao container
+        letterBox.appendChild(character);
+        letterBox.appendChild(input);
+        container.appendChild(letterBox);
+      });
+    }
+
+  // Verifica os palpites
+  function checkGuess(event) {
+    const input = event.target;
+    const guessedLetter = input.value.toUpperCase();
+    const correctLetter = input.dataset.letter;
+
+    if (guessedLetter === correctLetter) {
+      input.disabled = true; // Desabilita o campo após acertar
+      input.classList.add('correct');
+      input.classList.remove('incorrect');
+      guessedLetters[correctLetter] = true;
+      checkWinCondition();
+    } else if (guessedLetter) {
+      input.classList.add('incorrect');
+      input.classList.remove('correct');
+    } else {
+      // Limpa o estado quando o campo é apagado
+      input.classList.remove('correct', 'incorrect');
+    }
+  }
+
+    // Verifica se todas as letras foram acertadas
+    function checkWinCondition() {
+      if (Object.keys(guessedLetters).length === alphabet.length) {
+        const feedback = document.getElementById('feedback');
+        feedback.style.color = "green";
+        generateDownload();
+      }
+    }
+    
+    function adjustContainerWidth() {
+  const container = document.querySelector('.alphabet-container');
+  const minWidth = shuffledAlphabet.length * 120; // Ajuste o tamanho de cada item
+  container.style.minWidth = `${minWidth}px`;
+  }
+
+  window.onload = () => {
+    setupAlphabetGame();
+    adjustContainerWidth();
+  };
+// Gera o download automático do arquivo existente
+function generateDownload() {
+  const filePath = "c:\Users\Morae\Downloads\O meu outro final\Alfabeto Completo.rar"; // Caminho do arquivo
+
+  // Cria uma URL para o arquivo e força o download
+  const link = document.createElement("a");
+  link.href = filePath;
+  link.setAttribute("download", "alfabetoCOMPLETO.rar"); // Força o download com o nome desejado
+  link.style.display = "none"; // Não mostrar o link
+  document.body.appendChild(link);
+
+  // Simula o clique no link para iniciar o download
+  link.click();
+
+  // Remove o link após o clique
+  document.body.removeChild(link);
+}
+
+    // Inicializa o jogo ao carregar a página
+    window.onload = setupAlphabetGame;
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center; /* Centraliza horizontalmente */
+      margin: 20px auto; /* Espaçamento e centralização */
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+
+    .alphabet-container {
+  display: grid; /* Usa grid layout */
+  grid-template-columns: repeat(13, 1fr); /* 13 colunas fixas */
+  justify-content: start; /* Alinha os itens à esquerda */
+  gap: 30px; /* Espaçamento entre os itens */
+  padding: 20px; /* Espaçamento interno */
+  margin: 0 auto; /* Centraliza o contêiner */
+  overflow-x: auto; /* Habilita rolagem horizontal se necessário */
+  box-sizing: border-box; /* Inclui padding no cálculo do tamanho */
+}
+
+.letter-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.styled-character {
+  font-size: clamp(6rem, 8vw, 9rem); /* Ajusta dinamicamente o tamanho */
+  font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
+  color: white;
+}
+
+    input {
+      font-size: 1.5rem;
+      text-align: center;
+      width: 50px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    #feedback {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+
+    a {
+      margin-top: 20px;
+      display: block;
+      font-size: 1.5rem;
+      color: yellow;
+      text-decoration: none;
+    }
+
+/* Estilo da barra lateral */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%; /* Ocupa toda a altura da página */
+  background-color: #333; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra da barra */
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo dos links na barra */
+.sidebar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.2rem;
+  margin: 15px 0;
+  padding: 10px 0; /* Apenas padding vertical para evitar mudanças na largura */
+  width: 100%; /* Garante que o link ocupa toda a largura */
+  text-align: center;
+  box-sizing: border-box; /* Garante que padding e largura sejam consistentes */
+  transition: background-color 0.3s, color 0.3s; /* Apenas transições de cor */
+}
+
+/* Hover nos links */
+.sidebar a:hover {
+  background-color: #575757;
+  color: #ffd700; /* Amarelo dourado */
+}
+
+    /* Ajusta o conteúdo principal para não sobrepor a barra */
+    .content {
+      margin-left: 220px; /* Espaço maior do que a largura da barra */
+      padding: 20px;
+    }
+
+    /* Media queries para telas menores */
+    @media (max-width: 768px) {
+      .alphabet-container {
+        grid-template-columns: repeat(6, auto); /* Reduz para 6 colunas */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .alphabet-container {
+        grid-template-columns: repeat(4, auto); /* Reduz para 4 colunas */
+      }
+    }
+
+  /* Campo correto */
+input.correct {
+    background-color: green !important;
+    color: white;
+    border: 2px solid green;
+}
+
+  /* Campo incorreto */
+  input.incorrect {
+    background-color: red !important;
+    color: white;
+    border: 2px solid red;
+  }
+  </style>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/* Resetando margens e paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black; /* Cor de fundo preta */
+  color: white; /* Texto branco */
+  font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
+
+  display: flex;
+  justify-content: center; /* Alinha o conteúdo horizontalmente no centro */
+  align-items: center; /* Alinha o conteúdo verticalmente no centro */
+  flex-direction: column; /* Organiza o conteúdo em coluna */
+  text-align: center; /* Centraliza o texto */
+  margin: 0; /* Remove a margem padrão */
+}
+
+header {
+  width: 100%; /* Ocupa toda a largura da tela */
+  display: flex;
+  flex-direction: column; /* Organiza os elementos na vertical */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-left: 200px;
+  font-size: 9rem; /* Tamanho grande para o título */
+  color: #ffffff; /* Cor amarela para destacar */
+  letter-spacing: 2px; /* Espaçamento entre as letras */
+  word-spacing: 40px; /* Espaçamento entre as palavras */
+  text-transform: uppercase; /* Torna o texto maiúsculo */
+  font-weight: bold; /* Deixa o título em negrito */
+  margin-bottom: 120px; /* Espaço abaixo do título */
+}
+
+h2 {
+  font-size: 6rem; /* Tamanho do subtítulo */
+  color: #ffffff; /* Cor amarela para o subtítulo */
+  margin-left: 200px;
+  margin-top: 40px; /* Distância do subtítulo em relação ao título */
+  align-self: flex-start; /* Alinha o subtítulo à esquerda */
+}
+
+h3 {
+  font-size: 6rem; /* Tamanho do subtítulo */
+  color: #ffffff; /* Cor amarela para o subtítulo */
+  margin-top: 40px; /* Distância do subtítulo em relação ao título */
+  margin: 10px 0; /* Espaço acima e abaixo do subtítulo */
+  align-self: flex-end; /* Alinha o subtítulo à direita */
+}
+
+h4 {
+  font-size: 6rem; /* Tamanho do subtítulo */
+  color: #ffffff; /* Cor amarela para o subtítulo */
+  margin-top: 40px; /* Distância do subtítulo em relação ao título */
+  margin: 10px 0; /* Espaço acima e abaixo do subtítulo */
+  align-self: flex-end; /* Alinha o subtítulo à direita */
+}
+
+h5 {
+  font-size: 6rem; /* Tamanho do subtítulo */
+  color: #ffffff; /* Cor amarela para o subtítulo */
+  margin-top: 40px; /* Distância do subtítulo em relação ao título */
+  margin-left: 200px;
+  align-self: flex-start; /* Alinha o subtítulo à esquerda */
+}
+
+h6 {
+  margin-left: 200px;
+  font-size: 6rem; /* Tamanho do subtítulo */
+  color: #ffffff; /* Cor amarela para o subtítulo */
+  margin-top:240px; /* Distância do subtítulo em relação ao título */
+  margin-bottom:120px; /* Distância do subtítulo em relação ao título */
+  align-self: center; /* Alinha o subtítulo à esquerda */
+}
+
+/* Container para os subtítulos, alinha na mesma linha */
+.subtitulos-container {
+  width: 100%; /* Ocupa toda a largura do header */
+  display: flex; /* Flexbox para alinhamento */
+  justify-content: space-between; /* Coloca os subtítulos nas extremidades (esquerda e direita) */
+  margin-top: 40px; /* Distância entre o título e os subtítulos */
+}
+
+/* Caixa de texto para o primeiro subtítulo (à esquerda) */
+textarea.pertencimento {
+  margin-left: 220px;
+  width: 35%; /* Ajusta a largura da primeira caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #555; /* Cor de fundo mais clara */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-start; /* Alinha a caixa de texto à esquerda */
+}
+
+/* Caixa de texto para o segundo subtítulo (à direita) */
+textarea.erick {
+  width: 35%; /* Ajusta a largura da segunda caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #333; /* Cor de fundo mais escura */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-end; /* Alinha a caixa de texto à direita */
+}
+
+/* Caixa de texto para o segundo subtítulo (à direita) */
+textarea.abuso {
+  width: 35%; /* Ajusta a largura da segunda caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #333; /* Cor de fundo mais escura */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-end; /* Alinha a caixa de texto à direita */
+}
+
+/* Caixa de texto para o primeiro subtítulo (à esquerda) */
+textarea.vitoria {
+  margin-left: 220px;
+  width: 35%; /* Ajusta a largura da primeira caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #555; /* Cor de fundo mais clara */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-start; /* Alinha a caixa de texto à esquerda */
+}
+
+/* Caixa de texto para o primeiro subtítulo (à esquerda) */
+textarea.leticia {
+  margin-left: 220px;
+  width: 35%; /* Ajusta a largura da primeira caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #555; /* Cor de fundo mais clara */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-start; /* Alinha a caixa de texto à esquerda */
+}
+
+/* Caixa de texto para o primeiro subtítulo (à esquerda) */
+textarea.amizade {
+  width: 35%; /* Ajusta a largura da segunda caixa de texto (menor) */
+  height: 150px; /* Altura da caixa de texto */
+  margin-top: 20px; /* Espaço acima da caixa de texto */
+  padding: 15px; /* Espaçamento interno na caixa de texto */
+  font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
+  border: 2px solid #ffffff; /* Borda branca */
+  background-color: #333; /* Cor de fundo mais escura */
+  color: white; /* Cor do texto dentro da caixa */
+  resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
+  align-self: flex-end; /* Alinha a caixa de texto à direita */
+}
+
+/* Importando a fonte personalizada */
+@font-face {
+  font-family: 'MinhaFonte';
+  src: url('assets/fonts/Lith.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+    /* Estilo da barra lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%; /* Ocupa toda a altura da página */
+      background-color: #333; /* Cor de fundo */
+      color: #fff; /* Cor do texto */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra da barra */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo dos links na barra */
+    .sidebar a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 2.2rem;
+      margin: 15px 0;
+      padding: 10px 15px;
+      width: 100%;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Hover nos links */
+    .sidebar a:hover {
+      background-color: #575757;
+      color: #ffd700; /* Amarelo dourado */
+    }
+
+    /* Ajusta o conteúdo principal para não sobrepor a barra */
+    .content {
+      margin-left: 220px; /* Espaço maior do que a largura da barra */
+      padding: 20px;
+      width: calc(100% - 220px); /* Ajusta a largura do conteúdo principal */
+    }
+
+    /* Estilo da barra lateral */
+.letter {
+  font-size: 3rem; /* Tamanho grande para as letras */
+  background-color: #444; /* Cor de fundo escura */
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.letter:hover {
+  background-color: #555;
+  transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}

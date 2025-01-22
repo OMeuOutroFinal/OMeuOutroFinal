@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O meu outro final.</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+    .clickable {
+      cursor: pointer;
+    }
+    .gold {
+      color: gold;
+    }
+    .green {
+      color: green;
+    }
+    .blue {
+      color: blue;
+    }
+    .purple {
+      color: #800080;
+    }
+    .red {
+      color: red;
+    }
+    .orange {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="index.html">Início</a>
+    <a href="alfabeto.html">Alfabeto</a>
+    <a href="sobre.html">Sobre</a>
+  </div>
+  <header>
+    <h1>O meu outro final.</h1>
+    <h2 id="subtitulo-1">-PERTENCIMENTO</h2>
+    <textarea class="pertencimento" id="texto1" placeholder=""></textarea>
+
+    <h3>TRAUMAS:</h3>
+    <h4 id="subtitulo-2">-ERICK</h4>
+    <textarea class="erick" id="texto2" placeholder=""></textarea>
+
+    <h4 id="subtitulo-3">-ABUSO</h4>
+    <textarea class="abuso" id="texto3" placeholder=""></textarea>
+
+    <h2>AMOR:</h2>
+    <h5 id="subtitulo-4">-VITORIA</h5>
+    <textarea class="vitoria" id="texto4" placeholder=""></textarea>
+    <h5 id="subtitulo-5">-LETICIA</h5>
+    <textarea class="leticia" id="texto5" placeholder=""></textarea>
+
+    <h3 id="subtitulo-6">-AMIZADE</h3>
+    <textarea class="amizade" id="texto6" placeholder=""></textarea>
+
+    <h6 id="fim" class="hidden">FIM?</h6>
+    <h6 id="meu-outro-final" class="hidden clickable">O meu outro final.</h6>
+  </header>
+
+  <script>
+    const fields = [
+      { id: "texto1", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" }, // Azul
+      { id: "texto2", correctValue2: "ciclos", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" }, // Verde escuro
+      { id: "texto3", correctValue2: "exige", correctValue3: "compartilhar as dores", subtitleId: "subtitulo-3", color: "#e15001" }, // Laranja
+      { id: "texto4", correctValue2: "desmascarar", correctValue3: "guardarei as memorias", subtitleId: "subtitulo-4", color: "#4acefe" }, // Roxo
+      { id: "texto5", correctValue2: "grandes", correctValue3: "jamais desistirei do amor", subtitleId: "subtitulo-5", color: "#ee40cd" }, // Amarelo
+      { id: "texto6", correctValue2: "dores", correctValue3: "lembrarei de todo o apoio", subtitleId: "subtitulo-6", color: "#800080" } // Marrom
+    ];
+
+    let correctValues2 = new Set();
+    let correctValues3 = new Set();
+
+    function updateFinalText() {
+      const outroFinalElement = document.getElementById("meu-outro-final");
+      if (correctValues3.size === fields.length) {
+        outroFinalElement.classList.remove("hidden");
+        outroFinalElement.classList.add("gold"); // Aplica a cor ao "O meu outro final"
+        outroFinalElement.onclick = () => {
+          const link = document.createElement("a");
+          link.href = "assets/arquivos/OutroFinal.rar";
+          link.download = "OutroFinal.rar";
+          link.click();
+        };
+      } else {
+        outroFinalElement.classList.add("hidden");
+        outroFinalElement.onclick = null;
+      }
+    }
+
+    function checkFinalCondition() {
+      const fimElement = document.getElementById("fim");
+      if (correctValues2.size === fields.length) {
+        fimElement.classList.remove("hidden");
+        fimElement.classList.add("white", "clickable"); // Aplica a cor ao "FIM?"
+        fimElement.onclick = () => {
+          const link = document.createElement("a");
+          link.href = "assets/arquivos/Fim.rar";
+          link.download = "Fim.rar";
+          link.click();
+        };
+      } else {
+        fimElement.classList.add("hidden");
+        fimElement.onclick = null;
+      }
+    }
+
+    function checkAndProcess(field) {
+      const textarea = document.getElementById(field.id);
+      const subtitle = document.getElementById(field.subtitleId);
+
+      function verifyText() {
+        const inputValue = textarea.value.toLowerCase();
+
+        if (inputValue === field.correctValue2.toLowerCase()) {
+          textarea.style.borderColor = field.color;
+          subtitle.style.color = field.color;
+          correctValues2.add(field.id);
+        } else if (inputValue === field.correctValue3.toLowerCase()) {
+          textarea.style.borderColor = "gold";
+          subtitle.style.color = "gold";
+          correctValues3.add(field.id);
+        } else {
+          textarea.style.borderColor = "#ffffff";
+          subtitle.style.color = "#ffffff";
+          correctValues2.delete(field.id);
+          correctValues3.delete(field.id);
+        }
+
+        checkFinalCondition();
+        updateFinalText();
+      }
+
+      textarea.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          verifyText();
+        }
+      });
+
+      textarea.addEventListener("blur", verifyText);
+    }
+
+    fields.forEach(checkAndProcess);
+  </script>
+</body>
+</html>
