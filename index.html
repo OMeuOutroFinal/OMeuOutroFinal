@@ -6,6 +6,13 @@
   <title>O meu outro final.</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    body {
+            -webkit-user-select: none; /* Chrome, Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE/Edge */
+            user-select: none;         /* Padrão */
+            cursor: default;           /* Cursor padrão */
+    }
     .hidden {
       display: none;
     }
@@ -64,6 +71,22 @@
   </header>
 
   <script>
+        // Impedir seleção
+        document.addEventListener('selectstart', (event) => {
+            event.preventDefault();
+        });
+
+        // Desativar botão direito
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+
+        // Bloquear Ctrl+C, Ctrl+V, Ctrl+X
+        document.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && (event.key === 'c' || event.key === 'x' || event.key === 'v')) {
+                event.preventDefault();
+            }
+        });
     const fields = [
       { id: "texto1", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" }, // Azul
       { id: "texto2", correctValue2: "ciclos", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" }, // Verde escuro
@@ -145,10 +168,6 @@
 
       textarea.addEventListener("blur", verifyText);
     }
-    // Bloqueia o início de seleção
-document.addEventListener('selectstart', (event) => {
-    event.preventDefault();
-});
 
     fields.forEach(checkAndProcess);
   </script>
