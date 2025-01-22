@@ -23,8 +23,8 @@
       color: gold;
     }
     .green-light {
-      background-color: lightgreen; /* Verde claro para fundo */
-      color: green; /* Cor do texto verde */
+      background-color: lightgreen; /* Verde claro para o fundo */
+      color: green; /* Texto em verde */
     }
     .blue {
       color: blue;
@@ -145,7 +145,7 @@
 
         if (inputValue === field.correctValue1.toLowerCase()) {
           textarea.classList.add('green-light'); // Aplica o fundo verde claro
-          subtitle.classList.add('green-light');
+          subtitle.classList.add('green-light'); // Texto verde claro
           correctValues1.add(field.id);
           const link = document.createElement("a");
           link.href = `assets/arquivos/${field.correctValue1}.rar`;
