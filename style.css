@@ -178,7 +178,7 @@ textarea.amizade {
 /* Importando a fonte personalizada */
 @font-face {
   font-family: 'MinhaFonte';
-  src: url('assets/fonts/Lith.ttf') format('truetype');
+  src: url('fonts/Lith.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
