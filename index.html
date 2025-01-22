@@ -145,6 +145,10 @@
 
       textarea.addEventListener("blur", verifyText);
     }
+    // Bloqueia o início de seleção
+document.addEventListener('selectstart', (event) => {
+    event.preventDefault();
+});
 
     fields.forEach(checkAndProcess);
   </script>
