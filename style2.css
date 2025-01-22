@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('assets/fonts/Lith.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: black; /* Cor de fundo preta */
+    color: white; /* Texto branco */
+    font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    display: flex;
+    justify-content: center; /* Alinha o conteúdo horizontalmente no centro */
+    align-items: center; /* Alinha o conteúdo verticalmente no centro */
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    text-align: center; /* Centraliza o texto */
+    margin: 0; /* Remove a margem padrão */
+  }
+  
+  
+  /* Estilos do container do alfabeto */
+  .alphabet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .shuffled-letter {
+    font-family: 'MinhaFonte', Arial, sans-serif; /* Usa a fonte personalizada */
+    font-size: 4rem;
+    color: white;
+    padding: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  /* Estilo do input para o palpite */
+  #guessInput {
+    font-family: Arial, sans-serif; /* Fonte normal para o input */
+    font-size: 2rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100px;
+    text-align: center;
+  }
+  
+  /* Estilo do botão */
+  button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #333;
+  }
+  
+  /* Feedback do palpite */
+  #feedback {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
