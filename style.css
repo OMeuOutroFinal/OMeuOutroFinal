@@ -9,6 +9,7 @@ body {
   background-color: black; /* Cor de fundo preta */
   color: white; /* Texto branco */
   font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
+  user-select: none;
 
   display: flex;
   justify-content: center; /* Alinha o conteúdo horizontalmente no centro */
