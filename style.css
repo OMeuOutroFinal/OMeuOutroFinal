@@ -9,10 +9,11 @@ body {
   background-color: black; /* Cor de fundo preta */
   color: white; /* Texto branco */
   font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
-  -webkit-user-select: none; /* Para navegadores baseados em WebKit (Chrome, Safari) */
-  -moz-user-select: none;    /* Para Firefox */
-  -ms-user-select: none;     /* Para Internet Explorer */
-  user-select: none;
+    -webkit-user-select: none; /* Para Chrome, Safari, e navegadores baseados em WebKit */
+    -moz-user-select: none;    /* Para Firefox */
+    -ms-user-select: none;     /* Para Internet Explorer/Edge */
+    user-select: none;         /* Para navegadores modernos */
+    cursor: default;           /* Opcional: cursor padrão para evitar confusão */
 
   display: flex;
   justify-content: center; /* Alinha o conteúdo horizontalmente no centro */
