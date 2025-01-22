@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-            -webkit-user-select: none; /* Chrome, Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* IE/Edge */
-            user-select: none;         /* Padrão */
-            cursor: default;           /* Cursor padrão */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: default;
     }
     .hidden {
       display: none;
@@ -22,21 +22,8 @@
     .gold {
       color: gold;
     }
-    .green-light {
-      background-color: lightgreen; /* Verde claro para o fundo */
-      color: green; /* Texto em verde */
-    }
-    .blue {
-      color: blue;
-    }
-    .purple {
-      color: #800080;
-    }
-    .red {
-      color: red;
-    }
-    .orange {
-      color: orange;
+    .white {
+      color: white;
     }
   </style>
 </head>
@@ -72,41 +59,25 @@
   </header>
 
   <script>
-        // Impedir seleção
-        document.addEventListener('selectstart', (event) => {
-            event.preventDefault();
-        });
-
-        // Desativar botão direito
-        document.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
-        });
-
-        // Bloquear Ctrl+C, Ctrl+V, Ctrl+X
-        document.addEventListener('keydown', (event) => {
-            if ((event.ctrlKey || event.metaKey) && (event.key === 'c' || event.key === 'x' || event.key === 'v')) {
-                event.preventDefault();
-            }
-        });
-
-      const fields = [
-      { id: "texto1",correctValue1: "Pertencimento", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" }, // Azul
-      { id: "texto2",correctValue1: "Erick", correctValue2: "ciclos", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" }, // Verde escuro
-      { id: "texto3",correctValue1: "Abuso", correctValue2: "exige", correctValue3: "compartilhar as dores", subtitleId: "subtitulo-3", color: "#e15001" }, // Laranja
-      { id: "texto4",correctValue1: "Vitoria", correctValue2: "desmascarar", correctValue3: "guardarei as memorias", subtitleId: "subtitulo-4", color: "#4acefe" }, // Roxo
-      { id: "texto5",correctValue1: "Leticia", correctValue2: "grandes", correctValue3: "jamais desistirei do amor", subtitleId: "subtitulo-5", color: "#ee40cd" }, // Amarelo
-      { id: "texto6",correctValue1: "Amizade", correctValue2: "dores", correctValue3: "lembrarei de todo o apoio", subtitleId: "subtitulo-6", color: "#800080" } // Marrom
+    const fields = [
+      { id: "texto1", correctValue1: "Pertencimento", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" },
+      { id: "texto2", correctValue1: "Erick", correctValue2: "ciclos", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" },
+      { id: "texto3", correctValue1: "Abuso", correctValue2: "exige", correctValue3: "compartilhar as dores", subtitleId: "subtitulo-3", color: "#e15001" },
+      { id: "texto4", correctValue1: "Vitoria", correctValue2: "desmascarar", correctValue3: "guardarei as memorias", subtitleId: "subtitulo-4", color: "#4acefe" },
+      { id: "texto5", correctValue1: "Leticia", correctValue2: "grandes", correctValue3: "jamais desistirei do amor", subtitleId: "subtitulo-5", color: "#ee40cd" },
+      { id: "texto6", correctValue1: "Amizade", correctValue2: "dores", correctValue3: "lembrarei de todo o apoio", subtitleId: "subtitulo-6", color: "#800080" }
     ];
 
     let correctValues1 = new Set();
     let correctValues2 = new Set();
     let correctValues3 = new Set();
+    const downloadedFields = new Set();
 
     function updateFinalText() {
       const outroFinalElement = document.getElementById("meu-outro-final");
       if (correctValues3.size === fields.length) {
         outroFinalElement.classList.remove("hidden");
-        outroFinalElement.classList.add("gold"); // Aplica a cor ao "O meu outro final"
+        outroFinalElement.classList.add("gold");
         outroFinalElement.onclick = () => {
           const link = document.createElement("a");
           link.href = "assets/arquivos/OutroFinal.rar";
@@ -123,7 +94,7 @@
       const fimElement = document.getElementById("fim");
       if (correctValues2.size === fields.length) {
         fimElement.classList.remove("hidden");
-        fimElement.classList.add("white", "clickable"); // Aplica a cor ao "FIM?"
+        fimElement.classList.add("white", "clickable");
         fimElement.onclick = () => {
           const link = document.createElement("a");
           link.href = "assets/arquivos/Fim.rar";
@@ -144,47 +115,31 @@
         const inputValue = textarea.value.toLowerCase();
 
         if (inputValue === field.correctValue1.toLowerCase()) {
-          textarea.style.borderColor = "#00c803";
-          subtitle.style.color = "#00c803";
-          correctValues1.add(field.id);
-          const link = document.createElement("a");
-          link.href = `assets/arquivos/${field.correctValue1}.rar`;
-          link.download = `${field.correctValue1}.rar`;
-          link.click();
+          if (!downloadedFields.has(field.id)) {
+            textarea.style.borderColor = "#00c803";
+            subtitle.style.color = "#00c803";
+            correctValues1.add(field.id);
+            downloadedFields.add(field.id);
+            const link = document.createElement("a");
+            link.href = `assets/arquivos/${field.correctValue1}.rar`;
+            link.download = `${field.correctValue1}.rar`;
+            link.click();
+          }
         } else if (inputValue === field.correctValue2.toLowerCase()) {
-        // Adicionar cores diferentes para correctValue2
-        if (inputValue === "quebrar") {
-          textarea.style.borderColor = "#363632"; 
-          subtitle.style.color = "#363632"; 
-        } else if (inputValue === "ciclos") {
-          textarea.style.borderColor = "#007c02"; 
-          subtitle.style.color = "#007c02"; 
-        } else if (inputValue === "exige") {
-          textarea.style.borderColor = "#e15001"; 
-          subtitle.style.color = "#e15001";
-        }else if (inputValue === "desmascarar") {
-          textarea.style.borderColor = "#4acefe"; 
-          subtitle.style.color = "#4acefe"; 
-        }else if (inputValue === "grandes") {
-          textarea.style.borderColor = "#ee40cd"; 
-          subtitle.style.color = "#ee40cd"; 
-        }else if (inputValue === "dores") {
-          textarea.style.borderColor = "#800080"; 
-          subtitle.style.color = "#800080"; 
-        }
-  correctValues2.add(field.id);
+          textarea.style.borderColor = field.color;
+          subtitle.style.color = field.color;
+          correctValues2.add(field.id);
         } else if (inputValue === field.correctValue3.toLowerCase()) {
           textarea.style.borderColor = "gold";
           subtitle.style.color = "gold";
           correctValues3.add(field.id);
         } else {
-          textarea.classList.remove('green-light');
-          subtitle.classList.remove('green-light');
           textarea.style.borderColor = "#ffffff";
           subtitle.style.color = "#ffffff";
           correctValues1.delete(field.id);
           correctValues2.delete(field.id);
           correctValues3.delete(field.id);
+          downloadedFields.delete(field.id);
         }
 
         checkFinalCondition();
