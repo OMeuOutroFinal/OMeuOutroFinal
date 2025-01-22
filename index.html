@@ -144,22 +144,42 @@
         const inputValue = textarea.value.toLowerCase();
 
         if (inputValue === field.correctValue1.toLowerCase()) {
-          textarea.classList.add('green-light'); // Aplica o fundo verde claro
-          subtitle.classList.add('green-light'); // Texto verde claro
+          textarea.style.borderColor = "#00c803";
+          subtitle.style.color = "#00c803";
           correctValues1.add(field.id);
           const link = document.createElement("a");
           link.href = `assets/arquivos/${field.correctValue1}.rar`;
           link.download = `${field.correctValue1}.rar`;
           link.click();
         } else if (inputValue === field.correctValue2.toLowerCase()) {
-          textarea.style.borderColor = field.color;
-          subtitle.style.color = field.color;
-          correctValues2.add(field.id);
+        // Adicionar cores diferentes para correctValue2
+        if (inputValue === "quebrar") {
+          textarea.style.borderColor = "#363632"; 
+          subtitle.style.color = "#363632"; 
+        } else if (inputValue === "ciclos") {
+          textarea.style.borderColor = "#007c02"; 
+          subtitle.style.color = "#007c02"; 
+        } else if (inputValue === "exige") {
+          textarea.style.borderColor = "#e15001"; 
+          subtitle.style.color = "#e15001";
+        }else if (inputValue === "desmascarar") {
+          textarea.style.borderColor = "#4acefe"; 
+          subtitle.style.color = "#4acefe"; 
+        }else if (inputValue === "grandes") {
+          textarea.style.borderColor = "#ee40cd"; 
+          subtitle.style.color = "#ee40cd"; 
+        }else if (inputValue === "dores") {
+          textarea.style.borderColor = "#800080"; 
+          subtitle.style.color = "#800080"; 
+        }
+  correctValues2.add(field.id);
         } else if (inputValue === field.correctValue3.toLowerCase()) {
           textarea.style.borderColor = "gold";
           subtitle.style.color = "gold";
           correctValues3.add(field.id);
         } else {
+          textarea.classList.remove('green-light');
+          subtitle.classList.remove('green-light');
           textarea.style.borderColor = "#ffffff";
           subtitle.style.color = "#ffffff";
           correctValues1.delete(field.id);
