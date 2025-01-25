@@ -110,16 +110,17 @@ textarea.pertencimento {
 
 /* Caixa de texto para o segundo subtítulo (à direita) */
 textarea.erick {
-  width: 35%; /* Ajusta a largura da segunda caixa de texto (menor) */
+  margin-left: 220px;
+  width: 35%; /* Ajusta a largura da primeira caixa de texto (menor) */
   height: 150px; /* Altura da caixa de texto */
   margin-top: 20px; /* Espaço acima da caixa de texto */
   padding: 15px; /* Espaçamento interno na caixa de texto */
   font-size: 1.2rem; /* Tamanho da fonte na caixa de texto */
   border: 2px solid #ffffff; /* Borda branca */
-  background-color: #333; /* Cor de fundo mais escura */
+  background-color: #555; /* Cor de fundo mais clara */
   color: white; /* Cor do texto dentro da caixa */
   resize: vertical; /* Permite redimensionar a caixa de texto verticalmente */
-  align-self: flex-end; /* Alinha a caixa de texto à direita */
+  align-self: flex-start; /* Alinha a caixa de texto à esquerda */
 }
 
 /* Caixa de texto para o segundo subtítulo (à direita) */
