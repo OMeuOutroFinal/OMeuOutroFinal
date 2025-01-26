@@ -58,29 +58,27 @@
 
   <script>
     const fields = [
-      { id: "texto1", correctValue1: "Pertencimento", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" },
-      { id: "texto2", correctValue1: "Erick", correctValue2: "exige", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" },
-      { id: "texto3", correctValue1: "Traumas", correctValue2: "ciclos", correctValue3: "compartilhar as dores", subtitleId: "subtitulo-3", color: "#e15001" },
-      { id: "texto4", correctValue1: "Vitoria", correctValue2: "desmascarar", correctValue3: "guardarei as memorias", subtitleId: "subtitulo-4", color: "#4acefe" },
-      { id: "texto5", correctValue1: "Leticia", correctValue2: "grandes", correctValue3: "jamais desistirei do amor", subtitleId: "subtitulo-5", color: "#ee40cd" },
-      { id: "texto6", correctValue1: "Amizade", correctValue2: "dores", correctValue3: "lembrarei de todo o apoio", subtitleId: "subtitulo-6", color: "#800080" }
+      { id: "texto1", correctValue1: "Pertencimento", driveLink: "https://drive.google.com/file/d/1d1rOdI5PEHhummr4B1FpE9XL_HHAm5eB/view?usp=sharing", correctValue2: "quebrar", correctValue3: "eu defino o meu lugar", subtitleId: "subtitulo-1", color: "#363632" },
+      { id: "texto2", correctValue1: "Erick", driveLink: "https://drive.google.com/file/d/1wx9qTMjvOD2XSHxmVpqyrGTVx4h-tYw0/view?usp=sharing", correctValue2: "exige", correctValue3: "obrigado por me amar", subtitleId: "subtitulo-2", color: "#007c02" },
+      { id: "texto3", correctValue1: "Traumas", driveLink: "https://drive.google.com/file/d/1Zti7tm9aHAOUv1dnirmUk6En_cDDz0EA/view?usp=sharing", correctValue2: "ciclos", correctValue3: "compartilhar as dores", subtitleId: "subtitulo-3", color: "#e15001" },
+      { id: "texto4", correctValue1: "Vitoria", driveLink: "https://drive.google.com/file/d/14TA3Oo3JNBcJ8fP3xxkVoypqyaP3xlrL/view?usp=sharing", correctValue2: "desmascarar", correctValue3: "guardarei as memorias", subtitleId: "subtitulo-4", color: "#4acefe" },
+      { id: "texto5", correctValue1: "Leticia", driveLink: "https://drive.google.com/file/d/1Kp14WFV4dUmxmhzSHmQcaIY1Tq4YlFyG/view?usp=sharing", correctValue2: "grandes", correctValue3: "jamais desistirei do amor", subtitleId: "subtitulo-5", color: "#ee40cd" },
+      { id: "texto6", correctValue1: "Amizade", driveLink: "https://drive.google.com/file/d/1PrBOkDDaI1fT0n_-A3eRlLF0F-wnDcqQ/view?usp=sharing", correctValue2: "dores", correctValue3: "lembrarei de todo o apoio", subtitleId: "subtitulo-6", color: "#800080" }
     ];
 
     let correctValues1 = new Set();
     let correctValues2 = new Set();
     let correctValues3 = new Set();
-    const downloadedFields = new Set();
 
+    // Função que atualiza a visibilidade do "O meu outro final"
     function updateFinalText() {
       const outroFinalElement = document.getElementById("meu-outro-final");
+      // Verifica se todos os correctValue3 foram acertados
       if (correctValues3.size === fields.length) {
         outroFinalElement.classList.remove("hidden");
         outroFinalElement.classList.add("gold");
         outroFinalElement.onclick = () => {
-          const link = document.createElement("a");
-          link.href = "assets/arquivos/OutroFinal.rar";
-          link.download = "OutroFinal.rar";
-          link.click();
+          window.open("https://drive.google.com/uc?id=ID_Final&export=download", "_blank");
         };
       } else {
         outroFinalElement.classList.add("hidden");
@@ -88,16 +86,15 @@
       }
     }
 
+    // Função que atualiza a visibilidade do "Fim?"
     function checkFinalCondition() {
       const fimElement = document.getElementById("fim");
+      // Verifica se todos os correctValue2 foram acertados
       if (correctValues2.size === fields.length) {
         fimElement.classList.remove("hidden");
         fimElement.classList.add("gold", "clickable");
         fimElement.onclick = () => {
-          const link = document.createElement("a");
-          link.href = "assets/arquivos/Fim.rar";
-          link.download = "Fim.rar";
-          link.click();
+          window.open("https://drive.google.com/file/d/1HDNAmc06pZsWQgit93BuXVTdeI1ZKdqa/view?usp=sharing", "_blank");
         };
       } else {
         fimElement.classList.add("hidden");
@@ -105,6 +102,7 @@
       }
     }
 
+    // Função que processa cada campo de entrada
     function checkAndProcess(field) {
       const textarea = document.getElementById(field.id);
       const subtitle = document.getElementById(field.subtitleId);
@@ -112,32 +110,38 @@
       function verifyText() {
         const inputValue = textarea.value.toLowerCase();
 
+        // Verifica se o valor é o correto para o correctValue1
         if (inputValue === field.correctValue1.toLowerCase()) {
-          if (!downloadedFields.has(field.id)) {
-            textarea.style.borderColor = "#00c803";
-            subtitle.style.color = "#00c803";
-            correctValues1.add(field.id);
-            downloadedFields.add(field.id);
-            const link = document.createElement("a");
-            link.href = `assets/arquivos/${field.correctValue1}.rar`;
-            link.download = `${field.correctValue1}.rar`;
-            link.click();
-          }
+          textarea.style.borderColor = "#00c803";
+          subtitle.style.color = "#00c803";
+          correctValues1.add(field.id);
+          // Torna o subtítulo clicável
+          subtitle.classList.add("clickable");
+          subtitle.onclick = () => {
+            window.open(field.driveLink, "_blank"); // Abre o link do Google Drive
+          };
         } else if (inputValue === field.correctValue2.toLowerCase()) {
           textarea.style.borderColor = field.color;
           subtitle.style.color = field.color;
           correctValues2.add(field.id);
+          // Remove a funcionalidade de clique se o valor for do correctValue2
+          subtitle.classList.remove("clickable");
+          subtitle.onclick = null;
         } else if (inputValue === field.correctValue3.toLowerCase()) {
           textarea.style.borderColor = "gold";
           subtitle.style.color = "gold";
           correctValues3.add(field.id);
+          // Remove a funcionalidade de clique se o valor for do correctValue3
+          subtitle.classList.remove("clickable");
+          subtitle.onclick = null;
         } else {
           textarea.style.borderColor = "#ffffff";
           subtitle.style.color = "#ffffff";
           correctValues1.delete(field.id);
           correctValues2.delete(field.id);
           correctValues3.delete(field.id);
-          downloadedFields.delete(field.id);
+          subtitle.classList.remove("clickable");
+          subtitle.onclick = null;
         }
 
         checkFinalCondition();
