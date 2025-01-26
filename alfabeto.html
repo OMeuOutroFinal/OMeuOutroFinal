@@ -11,14 +11,128 @@
       font-weight: bold;
       font-style: normal;
     }
-  </style>
-      body {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      cursor: default;
+
+    /* Estilo para o body */
+    body {
+      -webkit-user-select: none; /* Impede a seleção de texto no Chrome/Safari */
+      -moz-user-select: none;    /* Impede a seleção de texto no Firefox */
+      -ms-user-select: none;     /* Impede a seleção de texto no IE/Edge */
+      user-select: none;         /* Impede a seleção de texto no padrão */
+      cursor: default;           /* Define o cursor padrão */
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
     }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center; /* Centraliza horizontalmente */
+      margin: 20px auto; /* Espaçamento e centralização */
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+
+    .alphabet-container {
+      display: grid; /* Usa grid layout */
+      grid-template-columns: repeat(13, 1fr); /* 13 colunas fixas */
+      justify-content: start; /* Alinha os itens à esquerda */
+      gap: 30px; /* Espaçamento entre os itens */
+      padding: 20px; /* Espaçamento interno */
+      margin: 0 auto; /* Centraliza o contêiner */
+      overflow-x: auto; /* Habilita rolagem horizontal se necessário */
+      box-sizing: border-box; /* Inclui padding no cálculo do tamanho */
+    }
+
+    .letter-box {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .styled-character {
+      font-size: clamp(6rem, 8vw, 9rem); /* Ajusta dinamicamente o tamanho */
+      font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
+      color: white;
+    }
+
+    input {
+      font-size: 1.5rem;
+      text-align: center;
+      width: 50px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    #feedback {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 2.2rem;
+      margin: 15px 0;
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+      color: #ffd700;
+    }
+
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .alphabet-container {
+        grid-template-columns: repeat(6, auto);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .alphabet-container {
+        grid-template-columns: repeat(4, auto);
+      }
+    }
+
+    input.correct {
+      background-color: green !important;
+      color: white;
+      border: 2px solid green;
+    }
+
+    input.incorrect {
+      background-color: red !important;
+      color: white;
+      border: 2px solid red;
+    }
+  </style>
 </head>
 <body>
   <!-- Barra lateral -->
@@ -134,130 +248,5 @@
     // Inicializa o jogo ao carregar a página
     window.onload = setupAlphabetGame;
   </script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: black;
-      color: white;
-      margin: 0;
-      overflow-x: hidden;
-    }
-
-    h1 {
-      font-size: 3rem;
-      text-align: center; /* Centraliza horizontalmente */
-      margin: 20px auto; /* Espaçamento e centralização */
-      margin-top: 80px;
-      margin-bottom: 80px;
-    }
-
-    .alphabet-container {
-      display: grid; /* Usa grid layout */
-      grid-template-columns: repeat(13, 1fr); /* 13 colunas fixas */
-      justify-content: start; /* Alinha os itens à esquerda */
-      gap: 30px; /* Espaçamento entre os itens */
-      padding: 20px; /* Espaçamento interno */
-      margin: 0 auto; /* Centraliza o contêiner */
-      overflow-x: auto; /* Habilita rolagem horizontal se necessário */
-      box-sizing: border-box; /* Inclui padding no cálculo do tamanho */
-    }
-
-    .letter-box {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .styled-character {
-      font-size: clamp(6rem, 8vw, 9rem); /* Ajusta dinamicamente o tamanho */
-      font-family: 'MinhaFonte', Arial, sans-serif; /* Fonte personalizada */
-      color: white;
-    }
-
-    input {
-      font-size: 1.5rem;
-      text-align: center;
-      width: 50px;
-      margin-top: 10px;
-      text-transform: uppercase;
-    }
-
-    #feedback {
-      margin-top: 20px;
-      font-size: 1.5rem;
-    }
-
-    a {
-      margin-top: 20px;
-      display: block;
-      font-size: 1.5rem;
-      color: yellow;
-      text-decoration: none;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100%;
-      background-color: #333;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-      font-family: Arial, sans-serif;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 2.2rem;
-      margin: 15px 0;
-      padding: 10px 0;
-      width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #575757;
-      color: #ffd700;
-    }
-
-    .content {
-      margin-left: 220px;
-      padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .alphabet-container {
-        grid-template-columns: repeat(6, auto);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .alphabet-container {
-        grid-template-columns: repeat(4, auto);
-      }
-    }
-
-    input.correct {
-      background-color: green !important;
-      color: white;
-      border: 2px solid green;
-    }
-
-    input.incorrect {
-      background-color: red !important;
-      color: white;
-      border: 2px solid red;
-    }
-  </style>
 </body>
 </html>
